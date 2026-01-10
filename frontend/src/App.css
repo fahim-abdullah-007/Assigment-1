@@ -1,0 +1,13 @@
+.App {
+  max-width: 600px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+input {
+  margin: 5px;
+}
+
+button {
+  margin-left: 5px;
+}
