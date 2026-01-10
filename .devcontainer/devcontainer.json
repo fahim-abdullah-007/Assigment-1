@@ -6,8 +6,8 @@
       "version": "18"
     }
   },
-  "postCreateCommand": "echo 'Codespace ready for backend and frontend development'",
-  "forwardPorts": [8080, 3000],
+  "postCreateCommand": "set -e && cd frontend && npm ci || true",
+  "forwardPorts": [8081, 3002],
   "customizations": {
     "vscode": {
       "extensions": [
