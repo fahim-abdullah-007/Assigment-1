@@ -1,12 +1,12 @@
-# Lab Test One: Full-Stack CRUD Application
+# Advanced OOP - Lab Tests
 
 **Course:** Advanced Object-Oriented Programming  
-**Marks:** 10  
-**Status:** ✅ Complete
+**Repository:** Full-Stack CRUD Application with Java Collections  
+**Status:** ✅ Lab Test One Complete | 🔄 Lab Test Two In Progress
 
 ---
 
-## 📋 Lab Requirements (From lab-test-one.md)
+## 📋 Lab Test One: Full-Stack CRUD Application (10 Marks) ✅
 
 ### Part 1: GitHub Codespaces Configuration ✅
 - [x] Development environment configured
@@ -30,9 +30,39 @@
 
 ---
 
+## 📋 Lab Test Two: Java Collections (10 Marks) 🔄
+
+### Task 1: Load Students from CSV
+- [ ] Read students from CSV file (`lab-test-two/students.csv`)
+- [ ] Store students in an `ArrayList`
+- [ ] Ignore duplicate IDs using a `HashSet`
+
+### Task 2: Sorting
+- [ ] Implement `Comparable` to sort students by `id`
+- [ ] Implement `Comparator` to sort students by `cgpa` (descending order)
+
+### Task 3: Delete Using Iterator
+- [ ] Remove a student by `id`
+- [ ] Use `Iterator` for safe removal during iteration
+
+### Task 4: REST API Exposure
+- [ ] **GET** `/students` → Return all students
+- [ ] **GET** `/students/sort/cgpa` → Return students sorted by CGPA (descending)
+
+### Student Attributes for Lab Test Two
+| Attribute | Type |
+|-----------|------|
+| id | int |
+| name | String |
+| cgpa | double |
+
+---
+
 ## 🚀 Quick Start (30 seconds)
 
-### Terminal 1 - Backend
+### Lab Test One - Full-Stack Application
+
+#### Terminal 1 - Backend
 ```bash
 cd /workspaces/Assigment-1/backend/backend
 ./mvnw spring-boot:run
@@ -71,10 +101,11 @@ Then open in browser: **http://localhost:3002**
 3. [Installation & Setup](#installation--setup)
 4. [Running the Application](#running-the-application)
 5. [API Endpoints & Examples](#api-endpoints--examples)
-6. [Testing](#testing)
-7. [Features](#features)
-8. [Troubleshooting](#troubleshooting)
-9. [Lab Requirements Checklist](#lab-requirements-checklist)
+6. [Lab Test Two - Collections API](#lab-test-two---collections-api)
+7. [Testing](#testing)
+8. [Features](#features)
+9. [Troubleshooting](#troubleshooting)
+10. [Lab Requirements Checklist](#lab-requirements-checklist)
 
 ---
 
@@ -85,14 +116,14 @@ Then open in browser: **http://localhost:3002**
 - Create, read, update, and delete student records
 - Real-time updates in the user interface
 - RESTful API backend with Spring Boot
-- Clean, responsive web interface with React
+- Clean, responsive web interface with React + TypeScript
 
 ### Tech Stack
 | Component | Technology |
 |-----------|-----------|
-| Frontend | React 18.2+ |
+| Frontend | React 18.2 |
 | Backend | Spring Boot 4.0.1 |
-| Frontend Lang | JavaScript |
+| Frontend Lang | TypeScript 4.9 |
 | Backend Lang | Java 17 |
 | Database | H2 In-Memory |
 | Build Tool | Maven |
@@ -273,6 +304,43 @@ curl -X DELETE http://localhost:8081/students/1
 
 ---
 
+## 📊 Lab Test Two - Collections API
+
+Lab Test Two extends the backend with Java Collections features. The following endpoints will be available once implemented:
+
+### Sample CSV Data
+Located at: `lab-test-two/students.csv`
+```csv
+id,name,cgpa
+101,Arafat Rahman,3.75
+102,Nusrat Jahan,3.90
+103,Tanvir Hasan,3.40
+104,Mehedi Ahmed,3.60
+105,Sadia Islam,3.85
+```
+
+### Planned Endpoints
+
+#### GET /students (from CSV)
+Returns all students loaded from CSV with duplicates removed.
+
+#### GET /students/sort/cgpa
+Returns students sorted by CGPA in descending order.
+
+```bash
+# Test CGPA sorting (once implemented)
+curl http://localhost:8081/students/sort/cgpa
+```
+
+### Implementation Notes
+- Students are loaded from CSV into an `ArrayList`
+- `HashSet` used to filter duplicate IDs
+- `Comparable` interface for sorting by ID
+- `Comparator` for sorting by CGPA (descending)
+- `Iterator` for safe deletion during iteration
+
+---
+
 ## ✅ Testing
 
 ### Quick Test - Run All CRUD Operations
@@ -419,12 +487,14 @@ cd /workspaces/Assigment-1/backend/backend
 
 ## 📋 Lab Requirements Checklist
 
-### ✅ Part 1: GitHub Codespaces Configuration
+### ✅ Lab Test One: Full-Stack CRUD (Complete)
+
+#### Part 1: GitHub Codespaces Configuration
 - [x] Development environment configured
 - [x] All tools installed (Java, Node.js, npm, Maven)
 - [x] Ready to run both applications
 
-### ✅ Part 2: Backend - Spring Boot REST API
+#### Part 2: Backend - Spring Boot REST API
 - [x] GET /students (list all)
 - [x] GET /students/{id} (get one by ID)
 - [x] POST /students (create new)
@@ -433,13 +503,31 @@ cd /workspaces/Assigment-1/backend/backend
 - [x] DELETE /students/{id} (delete)
 - [x] All endpoints functional and tested
 
-### ✅ Part 3: Frontend - React Application
+#### Part 3: Frontend - React Application
 - [x] User interface displaying all students
 - [x] Form for creating students
 - [x] Form for updating students (inline)
 - [x] Delete functionality
 - [x] Complete backend integration
 - [x] Real-time UI updates
+
+### 🔄 Lab Test Two: Java Collections (In Progress)
+
+#### Task 1: Load Students from CSV
+- [ ] Read students from CSV file
+- [ ] Store in ArrayList
+- [ ] Remove duplicates using HashSet
+
+#### Task 2: Sorting
+- [ ] Implement Comparable (sort by ID)
+- [ ] Implement Comparator (sort by CGPA descending)
+
+#### Task 3: Delete Using Iterator
+- [ ] Safe removal during iteration
+
+#### Task 4: REST API
+- [ ] GET /students (from CSV)
+- [ ] GET /students/sort/cgpa
 
 ### ✅ Overall Application
 - [x] Both applications run without errors
@@ -456,7 +544,10 @@ cd /workspaces/Assigment-1/backend/backend
 /workspaces/Assigment-1/
 │
 ├── README.md                          # This file
-├── lab-test-one.md                   # Lab requirements
+├── lab-test-one.md                    # Lab Test One requirements
+├── lab-test-two.md                    # Lab Test Two requirements
+├── SUBMISSION_CHECKLIST.md            # Submission checklist
+├── SYSTEM_ARCHITECTURE_REPORT.md      # Architecture documentation
 │
 ├── backend/backend/
 │   ├── src/main/java/com/example/backend/
@@ -464,7 +555,7 @@ cd /workspaces/Assigment-1/backend/backend
 │   │   ├── controller/
 │   │   │   └── StudentController.java # REST endpoints
 │   │   ├── entity/
-│   │   │   └── Student.java           # Data model
+│   │   │   └── Student.java           # Data model (JPA)
 │   │   ├── repository/
 │   │   │   └── StudentRepository.java # Database access
 │   │   └── service/
@@ -479,19 +570,22 @@ cd /workspaces/Assigment-1/backend/backend
 │   ├── public/
 │   │   └── index.html                 # HTML template
 │   ├── src/
-│   │   ├── index.js                   # Entry point
-│   │   ├── App.js                     # Main component
+│   │   ├── index.tsx                  # Entry point (TypeScript)
+│   │   ├── App.tsx                    # Main component (TypeScript)
 │   │   ├── App.css                    # Styles
+│   │   ├── types/
+│   │   │   └── Student.ts             # TypeScript interfaces
 │   │   ├── api/
-│   │   │   └── backend.js             # API functions
+│   │   │   └── backend.ts             # API functions (TypeScript)
 │   │   └── components/
-│   │       ├── ResourceForm.js        # Add/Edit form
-│   │       └── ResourceList.js        # List & delete
+│   │       ├── ResourceForm.tsx       # Add form (TypeScript)
+│   │       └── ResourceList.tsx       # List & edit/delete (TypeScript)
+│   ├── tsconfig.json                  # TypeScript config
 │   ├── package.json                   # npm config
 │   └── node_modules/                  # Dependencies
 │
 └── lab-test-two/
-    └── students.csv                   # Sample data
+    └── students.csv                   # Sample CSV data for Lab Test Two
 ```
 
 ---
@@ -535,8 +629,11 @@ By completing this assignment:
 4. **Frontend Development** - React components and state
 5. **Backend Development** - Spring Boot with databases
 6. **Client-Server** - Frontend-backend communication
-7. **Clean Code** - OOP principles and design patterns
-8. **Developer Tools** - Maven, npm, Git, debugging
+7. **Java Collections** - ArrayList, HashSet, Iterator usage
+8. **Sorting** - Comparable and Comparator interfaces
+9. **File I/O** - Reading CSV files
+10. **Clean Code** - OOP principles and design patterns
+11. **Developer Tools** - Maven, npm, Git, debugging
 
 ---
 
@@ -546,9 +643,13 @@ By completing this assignment:
 - **CORS:** Enabled for cross-origin requests
 - **Codespaces:** Frontend automatically detects backend URL
 - **No External DB:** Everything works in-memory during dev
+- **CSV Data:** Lab Test Two uses `lab-test-two/students.csv`
 
 ---
 
-**✅ Assignment Status:** Complete and Ready for Submission  
-**Last Updated:** January 10, 2026  
-**Fully Tested:** ✓ All CRUD operations working
+**📊 Assignment Status:**  
+- Lab Test One: ✅ Complete  
+- Lab Test Two: 🔄 In Progress  
+
+**Last Updated:** January 17, 2026  
+**Fully Tested:** ✓ Lab Test One CRUD operations working

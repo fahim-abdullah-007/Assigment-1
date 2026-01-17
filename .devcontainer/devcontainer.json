@@ -6,8 +6,30 @@
       "version": "18"
     }
   },
-  "postCreateCommand": "set -e && cd frontend && npm ci || true",
-  "forwardPorts": [8081, 3002],
+  "postCreateCommand": "set -e && cd frontend && npm install || true",
+  "forwardPorts": [8081, 3002, 3003, 3004],
+  "portsAttributes": {
+    "8081": {
+      "label": "Backend API",
+      "onAutoForward": "notify",
+      "visibility": "public"
+    },
+    "3002": {
+      "label": "Frontend",
+      "onAutoForward": "openBrowser",
+      "visibility": "public"
+    },
+    "3003": {
+      "label": "Frontend Alt",
+      "onAutoForward": "notify",
+      "visibility": "public"
+    },
+    "3004": {
+      "label": "Frontend Alt 2",
+      "onAutoForward": "notify",
+      "visibility": "public"
+    }
+  },
   "customizations": {
     "vscode": {
       "extensions": [

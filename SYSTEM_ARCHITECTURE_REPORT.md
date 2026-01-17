@@ -2,7 +2,7 @@
 ## Full-Stack CRUD Application - Lab Test One
 
 **Student Name:** [To be filled]  
-**Date:** January 10, 2026  
+**Date:** January 17, 2026  
 **Course:** Advanced Object-Oriented Programming  
 **Assignment:** Take-Home Full-Stack CRUD Application  
 
@@ -10,7 +10,7 @@
 
 ## Executive Summary
 
-This report documents the design, implementation, and architecture of a complete full-stack CRUD (Create, Read, Update, Delete) application built with modern technologies. The application demonstrates end-to-end functionality from user interface through business logic to data persistence, following object-oriented programming principles and clean architecture patterns.
+This report documents the design, implementation, and architecture of a complete full-stack CRUD (Create, Read, Update, Delete) application built with modern technologies. The frontend is built with **React + TypeScript** for type safety and better developer experience, while the backend uses **Spring Boot** with Java 17. The application demonstrates end-to-end functionality from user interface through business logic to data persistence, following object-oriented programming principles and clean architecture patterns.
 
 ---
 
@@ -65,29 +65,33 @@ This report documents the design, implementation, and architecture of a complete
 ### 2.1 Component Structure
 
 ```
-App (Main Component)
-├── ResourceForm (Create/Update Form)
+App.tsx (Main Component)
+├── ResourceForm.tsx (Create Form)
 │   └── Input Fields (Name, Email)
-│   └── Submit Handler
-├── ResourceList (Display & Delete)
-│   ├── Student Item
-│   ├── Edit Button
-│   └── Delete Button
-└── API Client (backend.js)
-    ├── getResources()
-    ├── createResource()
-    ├── updateResource()
-    ├── patchResource()
-    └── deleteResource()
+│   └── Submit Handler with Types
+├── ResourceList.tsx (Display, Edit & Delete)
+│   ├── Student Item with Interface
+│   ├── Edit Mode Toggle
+│   └── Delete Handler
+├── types/Student.ts (TypeScript Interfaces)
+│   ├── Student
+│   ├── CreateStudentDTO
+│   └── UpdateStudentDTO
+└── api/backend.ts (Typed API Client)
+    ├── getResources(): Promise<Student[]>
+    ├── getResourceById(id): Promise<Student>
+    ├── createResource(data): Promise<Student>
+    ├── updateResource(id, data): Promise<Student>
+    ├── patchResource(id, data): Promise<Student>
+    └── deleteResource(id): Promise<void>
 ```
 
 ### 2.2 Technology Stack - Frontend
 
 | Technology | Version | Purpose |
 |-----------|---------|---------|
-| React | 19.2.3 | UI Framework |
-| TypeScript | Latest | Type Safety |
-| JavaScript ES6+ | - | Programming Language |
+| React | 18.2.0 | UI Framework |
+| TypeScript | 4.9.5 | Type Safety & Static Typing |
 | Fetch API | Native | HTTP Requests |
 | CSS | Native | Styling |
 
@@ -99,9 +103,33 @@ App (Main Component)
 - **List State:** Student data array
 - **Edit State:** Track editing mode and selected student
 
-### 2.4 API Client Implementation
+### 2.4 TypeScript Type Definitions
 
-The `api/backend.js` file provides:
+```typescript
+// Student entity type matching backend model
+export interface Student {
+  id: number;
+  name: string;
+  email: string;
+}
+
+// Type for creating a new student (no ID required)
+export interface CreateStudentDTO {
+  name: string;
+  email: string;
+}
+
+// Type for updating a student (partial fields allowed)
+export interface UpdateStudentDTO {
+  name?: string;
+  email?: string;
+}
+```
+
+### 2.5 API Client Implementation
+
+The `api/backend.ts` file provides:
+- Fully typed async functions with Promise return types
 - Dynamic URL detection for Codespaces vs local dev
 - Wrapper functions for all HTTP methods
 - Error handling for API calls
